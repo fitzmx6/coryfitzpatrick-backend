@@ -6,6 +6,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -24,18 +25,15 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        String contentUrlAll = "/content/**";
-
         http
-                // Disable CSRF only for API endpoints
-                .csrf(csrf -> csrf.ignoringRequestMatchers(contentUrlAll))
+                .csrf(AbstractHttpConfigurer::disable) // disable CSRF for API POST
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(SWAGGER_WHITELIST).permitAll() // Swagger public
-                        .requestMatchers(HttpMethod.GET, "/content", contentUrlAll).permitAll() // GET public
-                        .requestMatchers(HttpMethod.POST, contentUrlAll).authenticated()        // POST secured
+                        .requestMatchers(HttpMethod.GET, "/content", "/content/**").permitAll() // GET public
+                        .requestMatchers(HttpMethod.POST, "/content/**").authenticated()        // POST secured
                         .anyRequest().denyAll()
                 )
-                .httpBasic(Customizer.withDefaults());
+                .httpBasic(Customizer.withDefaults()); // enable Basic Auth
 
         return http.build();
     }

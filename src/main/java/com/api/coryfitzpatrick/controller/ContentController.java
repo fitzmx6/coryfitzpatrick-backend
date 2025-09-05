@@ -30,7 +30,9 @@ public class ContentController {
 
     @PostMapping
     @SecurityRequirement(name = "basicAuth")
-    public void createContent(@RequestBody Content content) {
+    public ResponseEntity<String> createContent(@RequestBody Content content) {
         contentService.addUpdateContent(content);
+
+        return ResponseEntity.ok("Content saved: " + content);
     }
 }
