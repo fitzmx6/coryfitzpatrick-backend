@@ -1,6 +1,6 @@
 package com.api.coryfitzpatrick.controller;
 
-import com.api.coryfitzpatrick.ContentService;
+import com.api.coryfitzpatrick.service.ContentService;
 import com.api.coryfitzpatrick.model.Content;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

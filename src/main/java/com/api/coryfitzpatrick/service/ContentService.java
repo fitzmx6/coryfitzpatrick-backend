@@ -1,4 +1,4 @@
-package com.api.coryfitzpatrick;
+package com.api.coryfitzpatrick.service;
 
 import com.api.coryfitzpatrick.model.Content;
 import com.api.coryfitzpatrick.repository.ContentRepository;
