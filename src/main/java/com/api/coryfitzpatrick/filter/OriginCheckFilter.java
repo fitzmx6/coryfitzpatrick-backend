@@ -26,17 +26,14 @@ public class OriginCheckFilter extends OncePerRequestFilter {
 
         String uri = request.getRequestURI();
 
-        // Skip Swagger/OpenAPI endpoints
         if (uri.startsWith("/v3/api-docs") || uri.startsWith("/swagger-ui") || uri.startsWith("/swagger-ui.html")) {
             filterChain.doFilter(request, response);
             return;
         }
 
-        // Only check GET requests to /content/**
         if ("GET".equalsIgnoreCase(request.getMethod()) && uri.startsWith("/content")) {
             String origin = request.getHeader("Origin");
 
-            // Block only if origin is present AND not allowed
             if (origin != null && !ALLOWED_ORIGINS.contains(origin)) {
                 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
                 response.getWriter().write("Forbidden: invalid origin");
@@ -44,7 +41,6 @@ public class OriginCheckFilter extends OncePerRequestFilter {
             }
         }
 
-        // Continue the filter chain
         filterChain.doFilter(request, response);
     }
 }

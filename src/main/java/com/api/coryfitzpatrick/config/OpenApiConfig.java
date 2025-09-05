@@ -20,7 +20,6 @@ public class OpenApiConfig {
                                         .scheme("basic") // basic auth scheme
                         )
                 )
-                // Apply security globally to endpoints that need auth
                 .addSecurityItem(new SecurityRequirement().addList("basicAuth"));
     }
 }

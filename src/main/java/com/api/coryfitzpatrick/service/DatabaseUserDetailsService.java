@@ -24,7 +24,7 @@ public class DatabaseUserDetailsService implements UserDetailsService {
 
         return User.builder()
                 .username(appUser.getUsername())
-                .password(appUser.getPassword()) // already hashed in DB
+                .password(appUser.getPassword())
                 .roles(appUser.getRole())
                 .build();
     }
