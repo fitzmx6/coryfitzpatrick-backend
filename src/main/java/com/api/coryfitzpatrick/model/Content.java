@@ -1,12 +1,12 @@
 package com.api.coryfitzpatrick.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
-import lombok.Setter;
 
 import java.util.List;
 
@@ -15,7 +15,8 @@ import java.util.List;
 public class Content {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // database auto-generated ID
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;
     private String type;
     private String name;

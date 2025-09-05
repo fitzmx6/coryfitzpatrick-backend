@@ -1,5 +1,6 @@
-package com.api.coryfitzpatrick.controller;
+package com.api.coryfitzpatrick.integration.controller;
 
+import com.api.coryfitzpatrick.controller.ContentController;
 import com.api.coryfitzpatrick.model.Content;
 import com.api.coryfitzpatrick.service.ContentService;
 import org.junit.jupiter.api.Test;

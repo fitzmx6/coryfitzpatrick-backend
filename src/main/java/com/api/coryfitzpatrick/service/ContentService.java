@@ -18,4 +18,8 @@ public class ContentService {
     public List<Content> getContent() {
         return contentRepository.findAll();
     }
+
+    public void addUpdateContent(Content content) {
+        contentRepository.save(content);
+    }
 }
