@@ -25,6 +25,10 @@ public class ContentService {
                 .toList();
     }
 
+    public Content getContentByUrl(String url) {
+        return contentRepository.findAll().stream().filter(content -> content.getUrl().equals(url)).findFirst().orElse(null);
+    }
+
     public void addUpdateContent(Content content) {
         contentRepository.save(content);
     }
