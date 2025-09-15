@@ -19,6 +19,12 @@ public class ContentService {
         return contentRepository.findAll();
     }
 
+    public List<Content> getContentByCategory(String category) {
+        return contentRepository.findAll().stream()
+                .filter(content -> content.getCategory() != null && content.getCategory().equalsIgnoreCase(category))
+                .toList();
+    }
+
     public void addUpdateContent(Content content) {
         contentRepository.save(content);
     }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -26,6 +27,13 @@ public class ContentController {
     @Operation(summary = "Get all content", description = "Retrieve all content from the database")
     public List<Content> getContent() {
         return contentService.getContent();
+    }
+
+    @GetMapping("/category")
+    @Operation(summary = "Get content by category",
+            description = "Retrieve all content for a specific category from the database")
+    public List<Content> getContentByCategory(@RequestParam String category) {
+        return contentService.getContentByCategory(category);
     }
 
     @PostMapping

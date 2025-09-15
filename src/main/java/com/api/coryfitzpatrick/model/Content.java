@@ -18,7 +18,7 @@ public class Content {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;
-    private String type;
+    private String category;
     private String name;
     @Column(columnDefinition = "TEXT")
     private String description;
