@@ -14,7 +14,7 @@
 	<name>coryfitzpatrick</name>
 	<description>Backend apis for coryfitzpatrick.com</description>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>25</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
