@@ -38,6 +38,7 @@ class DatabaseUserDetailsServiceTest {
         when(appUserRepository.findByUsername("localUnitTestUser")).thenReturn(Optional.of(appUser));
 
         UserDetails userDetails = userDetailsService.loadUserByUsername("localUnitTestUser");
+
         assertNotNull(userDetails);
         assertEquals("localUnitTestUser", userDetails.getUsername());
         assertEquals(appUser.getPassword(), userDetails.getPassword());
